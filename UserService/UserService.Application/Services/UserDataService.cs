@@ -24,7 +24,7 @@ namespace UserService.Application.Services
             var result = await _context.Users
                 .Include(user => user.TagToUsers!)
                     .ThenInclude(tagToUser => tagToUser.Tag)
-                .FirstOrDefaultAsync(user => user.Id == userId && user.Domain == domain);
+                .FirstOrDefaultAsync(user => user.Id.CompareTo(userId) == 0 && string.Equals(user.Domain, domain));
 
             return result;
         }
@@ -41,7 +41,7 @@ namespace UserService.Application.Services
             var result = await _context.Users
                 .Include(user => user.TagToUsers)!
                     .ThenInclude(tagToUser => tagToUser.Tag)
-                .Where(user => user.Domain == domain)
+                .Where(user => string.Equals(user.Domain, domain))
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
@@ -60,7 +60,7 @@ namespace UserService.Application.Services
             var result = await _context.Users
                 .Include(user => user.TagToUsers)!
                     .ThenInclude(tagToUser => tagToUser.Tag)
-                .Where(user => user.TagToUsers!.Any(tu => tu.Tag!.Value == tagValue) && user.Domain == domain)
+                .Where(user => user.TagToUsers!.Any(tagToUser => string.Equals(tagToUser.Tag!.Value, tagValue)) && string.Equals(user.Domain, domain))
                 .ToListAsync();
 
             return result;

@@ -17,6 +17,20 @@ namespace UserService.DataAccess.EntityConfigurations
                     TagId = Guid.Parse("091c5601-8648-4f43-8a46-cb1662023058"),
                 },
 
+                new TagToUser
+                {
+                    Id = Guid.Parse("2c7e7c4a-84df-4fb9-a0be-8f0c24d3add4"),
+                    UserId = Guid.Parse("05e7fa98-07d7-43dd-adc8-80e8ad6268c5"),
+                    TagId = Guid.Parse("091c5601-8648-4f43-8a46-cb1662023058"),
+                },
+
+                new TagToUser
+                {
+                    Id = Guid.Parse("78ad0162-3502-4900-b945-1764ad2da5c8"),
+                    UserId = Guid.Parse("50ef2384-c08a-4631-bd21-b2d70b2ae3c3"),
+                    TagId = Guid.Parse("091c5601-8648-4f43-8a46-cb1662023058"),
+                },
+
                  new TagToUser
                  {
                      Id = Guid.Parse("506ae79f-0690-447c-925b-66517d206309"),

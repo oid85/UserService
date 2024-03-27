@@ -26,9 +26,10 @@ namespace UserService.App
             // Демонстрация работы
             var userDataService = serviceProvider.GetService<UserDataService>();
 
-            var userByIdAndDomain = await userDataService!.GetUserByIdAndDomainAsync(Guid.Parse("d8d51a5e-1350-4bb0-b96b-190406924a68"), "example1.com");
-            var usersByDomain = await userDataService.GetUsersByDomainAsync("example1.com", 1, 1);
-            var usersByTagAndDomain = await userDataService.GetUsersByTagAndDomainAsync("value1", "example1.com");
+            // Вызов методов сервиса UserDataService
+            var userByIdAndDomain = await userDataService!.GetUserByIdAndDomainAsync(Guid.Parse("d8d51a5e-1350-4bb0-b96b-190406924a68"), "example1.com"); // Name = "name1"
+            var usersByDomain = await userDataService.GetUsersByDomainAsync("example1.com", 1, 2); // Count = 2
+            var usersByTagAndDomain = await userDataService.GetUsersByTagAndDomainAsync("value1", "example1.com"); // Count = 3
         }
     }
 }
